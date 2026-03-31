@@ -1,0 +1,386 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cabinet Grotesk loaded via index.html */
+
+/* ─── BASE ───────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: #080808;
+  color: #f0efed;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─── CUSTOM CURSOR ──────────────────────────────── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #c8ff00;
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(200, 255, 0, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1),
+              height 0.3s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.2s;
+}
+
+.cursor-ring.active {
+  width: 56px;
+  height: 56px;
+  border-color: #c8ff00;
+}
+
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none; }
+  body { cursor: auto; }
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #c8ff00; }
+
+/* ─── SELECTION ──────────────────────────────────── */
+::selection {
+  background: rgba(200, 255, 0, 0.25);
+  color: #f0efed;
+}
+
+/* ─── TYPOGRAPHY UTILITIES ───────────────────────── */
+.font-display { font-family: 'Cabinet Grotesk', 'DM Sans', sans-serif; }
+.font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
+
+/* ─── HEADER MEGA MENU ───────────────────────────── */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 8, 8, 0.97);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: 2px solid #c8ff00;
+  min-width: 700px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1), visibility 0.25s;
+}
+
+.mega-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── GRADIENT TEXT ──────────────────────────────── */
+.text-gradient-lime {
+  background: linear-gradient(135deg, #c8ff00, #00ff87);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── GLASS EFFECT ───────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.glass-dark {
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ─── NOISE TEXTURE ──────────────────────────────── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── BUTTON STYLES ──────────────────────────────── */
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-ev-lime text-ev-black text-sm tracking-wide px-7 py-4 rounded-full transition-all duration-300;
+  font-family: 'Cabinet Grotesk', 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+.btn-primary:hover {
+  @apply bg-white shadow-lg;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(200,255,0,0.25);
+}
+
+.btn-outline {
+  @apply inline-flex items-center gap-2 bg-transparent text-ev-white border border-white/20 text-sm tracking-wide px-7 py-4 rounded-full transition-all duration-300;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+}
+.btn-outline:hover {
+  @apply border-ev-lime text-ev-lime;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 text-ev-muted text-sm transition-colors duration-200;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.btn-ghost:hover {
+  @apply text-ev-white;
+}
+
+/* ─── SECTION UTILITIES ──────────────────────────── */
+.section-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #8a8a8a;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.section-label-lime {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #c8ff00;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 500;
+}
+
+/* ─── CARD HOVER ─────────────────────────────────── */
+.card-hover {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200,255,0,0.25);
+}
+
+/* ─── LINE CLAMP ──────────────────────────────────── */
+.clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ─── SWIPER OVERRIDES ────────────────────────────── */
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.3) !important;
+  width: 6px !important;
+  height: 6px !important;
+  opacity: 1 !important;
+  transition: all 0.3s !important;
+}
+.swiper-pagination-bullet-active {
+  background: #c8ff00 !important;
+  width: 24px !important;
+  border-radius: 3px !important;
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── MAP NODE PULSE ──────────────────────────────── */
+@keyframes mapPulse {
+  0% { r: 4px; opacity: 0.8; }
+  100% { r: 16px; opacity: 0; }
+}
+.map-pulse {
+  animation: mapPulse 2.5s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ─── CHARGE BAR ─────────────────────────────────── */
+@keyframes chargeFlow {
+  0% { width: 20%; }
+  100% { width: 88%; }
+}
+.charge-animate {
+  animation: chargeFlow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* ─── NUMBER COUNTER ──────────────────────────────── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── GRADIENT BORDER ─────────────────────────────── */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(200,255,0,0.4), rgba(0,255,135,0.1), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── PAGE TRANSITION ─────────────────────────────── */
+.page-enter {
+  animation: pageEnter 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── TICKER ──────────────────────────────────────── */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── VIDEO OVERLAY ───────────────────────────────── */
+.video-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(8,8,8,0.3) 0%,
+    transparent 30%,
+    transparent 60%,
+    rgba(8,8,8,0.85) 100%
+  );
+}
+
+/* ─── FAQ ACCORDION ───────────────────────────────── */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.accordion-content.open {
+  max-height: 400px;
+}
+
+/* ─── STAT NUMBER ─────────────────────────────────── */
+.stat-number {
+  font-family: 'Cabinet Grotesk', 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #f0efed 30%, #c8c8c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── RESPONSIVE HEADER ───────────────────────────── */
+@media (max-width: 1024px) {
+  .mega-menu { display: none !important; }
+}
+
+/* ─── HERO GRADIENT ───────────────────────────────── */
+.hero-gradient {
+  background: radial-gradient(ellipse 100% 80% at 50% 120%, rgba(200,255,0,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 50% at 80% 10%, rgba(0,255,135,0.04) 0%, transparent 50%),
+              #080808;
+}
+
+/* ─── UNDERLINE ANIMATION ──────────────────────────── */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c8ff00;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.hover-underline:hover::after { width: 100%; }
+
+/* ─── NETWORK MAP ─────────────────────────────────── */
+.map-container {
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.map-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,255,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,255,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
