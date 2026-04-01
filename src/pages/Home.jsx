@@ -285,6 +285,7 @@ function Features() {
   )
 }
 
+
 /* ── SUBSCRIPTION ── */
 function SubscriptionCTA() {
   const plans = [
@@ -333,6 +334,117 @@ const CheckCircle2Icon = ({ plan }) => (
     <path d="M3.5 6.5L5.5 8.5L9.5 4.5" stroke={plan.featured?'#0A0B0A':'#C8FF00'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
+
+
+/* ── APP PROMOTION ── */
+function AppPromo() {
+  return (
+    <Section dark id="app">
+      <div className="relative rounded-3xl overflow-hidden border border-white/[0.06]"
+        style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #141a0a 50%, #0f0f0f 100%)' }}
+      >
+        {/* Glow */}
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 60% 70% at 80% 50%, rgba(200,255,0,0.06) 0%, transparent 70%)' }}
+        />
+
+        <div className="relative px-8 py-14 lg:px-16 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="section-label-lime mb-4 reveal">EV Halt App</div>
+            <h2 className="font-display text-h2 text-ev-white mb-5 reveal reveal-delay-1" style={{ fontWeight: 700 }}>
+              Your charging journey<br />
+              <span className="text-gradient-lime">in your pocket.</span>
+            </h2>
+            <p className="text-[1rem] text-ev-muted leading-relaxed mb-8 font-300 reveal reveal-delay-2">
+              Find stations, book slots, monitor your charge in real-time, manage subscriptions, and track your carbon savings — all in the EV Halt app.
+            </p>
+            <div className="flex flex-wrap gap-3 reveal reveal-delay-3">
+              {['iOS App Store', 'Google Play'].map((store) => (
+                <button key={store} className="flex items-center gap-2.5 bg-ev-dark2 border border-white/10 rounded-xl px-5 py-3 hover:border-ev-lime/30 transition-colors">
+                  <span className="text-ev-lime text-lg">{store.includes('iOS') ? '' : '▶'}</span>
+                  <div className="text-left">
+                    <div className="text-[0.58rem] text-ev-muted uppercase tracking-[0.1em]">Download on</div>
+                    <div className="text-[0.85rem] font-600 text-ev-white" style={{ fontWeight: 600 }}>{store}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 mt-6 reveal reveal-delay-4">
+              <div className="flex">
+                {[0,1,2,3,4].map(i => <Star key={i} size={14} className="text-ev-lime fill-ev-lime" />)}
+              </div>
+              <span className="text-[0.82rem] text-ev-muted">4.8 rating · 50,000+ downloads</span>
+            </div>
+          </div>
+
+          {/* App mockup */}
+          <div className="flex justify-center lg:justify-end reveal reveal-delay-1">
+            <div className="relative w-[280px]">
+              {/* Phone frame */}
+              <div className="relative bg-ev-dark3 rounded-[40px] border border-white/10 p-2 shadow-2xl" style={{ boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)' }}>
+                <div className="bg-ev-black rounded-[32px] overflow-hidden" style={{ aspectRatio: '9/19' }}>
+                  {/* Notch */}
+                  <div className="flex justify-center pt-3 pb-2">
+                    <div className="w-24 h-1.5 bg-ev-dark3 rounded-full" />
+                  </div>
+                  {/* App UI mockup */}
+                  <div className="px-4 pb-4 space-y-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <div className="text-[0.55rem] text-ev-muted">Good evening,</div>
+                        <div className="text-[0.78rem] font-600 text-ev-white" style={{ fontWeight: 600 }}>Arjun ⚡</div>
+                      </div>
+                      <div className="w-7 h-7 rounded-full bg-ev-lime flex items-center justify-center">
+                        <Zap size={12} className="text-ev-black fill-ev-black" />
+                      </div>
+                    </div>
+                    {/* Charge card */}
+                    <div className="bg-ev-dark2 rounded-2xl p-3 border border-white/[0.06]">
+                      <div className="text-[0.55rem] text-ev-muted mb-2">Active Session — Koramangala</div>
+                      <div className="font-display font-700 text-ev-lime text-[1.4rem] leading-none mb-1" style={{ fontWeight: 700 }}>
+                        87 kW
+                      </div>
+                      <div className="text-[0.58rem] text-ev-muted mb-2">Charging speed</div>
+                      {/* Progress bar */}
+                      <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                        <div className="h-full bg-ev-lime rounded-full charge-animate" style={{ width: '65%' }} />
+                      </div>
+                      <div className="flex justify-between mt-1.5">
+                        <span className="text-[0.55rem] text-ev-muted">65%</span>
+                        <span className="text-[0.55rem] text-ev-lime">~18 min</span>
+                      </div>
+                    </div>
+                    {/* Map placeholder */}
+                    <div className="bg-ev-dark3 rounded-xl h-[90px] border border-white/[0.04] flex items-center justify-center">
+                      <div className="text-center">
+                        <MapPin size={16} className="text-ev-lime mx-auto mb-1" />
+                        <div className="text-[0.55rem] text-ev-muted">3 stations nearby</div>
+                      </div>
+                    </div>
+                    {/* Stations list */}
+                    {['Koramangala · 0.2 km', 'Indiranagar · 1.4 km'].map((s) => (
+                      <div key={s} className="flex items-center justify-between bg-ev-dark3 rounded-xl px-3 py-2.5 border border-white/[0.04]">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-ev-lime" />
+                          <span className="text-[0.65rem] text-ev-light">{s}</span>
+                        </div>
+                        <ChevronRight size={12} className="text-ev-muted" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {/* Glow under phone */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-48 h-12 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse, rgba(200,255,0,0.2), transparent)' }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  )
+}
 
 /* ── TESTIMONIALS ── */
 function Testimonials() {
@@ -399,9 +511,10 @@ export default function Home() {
       <TickerStrip items={['AC Charging · 22kW','DC Fast Charge · 60kW','Ultra-Rapid · 150kW','Solar Powered','99.7% Uptime','OCPP 2.0','ISO 15118','Plug & Charge','Fleet Solutions','App Control','28 Cities','350+ Stations']} />
       <StatsBand />
       <NetworkPreview />
-      <GalleryPreview />
+      {/* <GalleryPreview /> */}
       <Features />
       <SubscriptionCTA />
+      <AppPromo />
       <Testimonials />
       <GradientDivider />
       <CTABand />
