@@ -24,7 +24,7 @@ function ChargingSpecs() {
           <p className="text-ev-muted leading-relaxed mb-8 font-300 reveal reveal-delay-2">
             Every EV Halt station supports CCS2, CHAdeMO, and Type-2 AC simultaneously. Our proprietary smart power management algorithm distributes peak power across all connected vehicles — no degradation, no waiting.
           </p>
-          <div className="space-y-0 border border-ev-lime/[0.1] rounded-2xl overflow-hidden reveal reveal-delay-3">
+          <div className="space-y-0 border border-ev-lime/[0.1] rounded-2xl overflow-hidden reveal reveal-delay-3 px-3">
             {[
               ['Peak Output',         '150 kW per port'],
               ['Simultaneous ports',  'Up to 4 per station'],

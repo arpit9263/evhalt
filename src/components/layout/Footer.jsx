@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div className="col-span-2">
             <Link to="/" className="inline-block mb-5">
-              <img src={IMAGES.logo} alt={COMPANY.name} className="h-10 w-auto object-contain"
+              <img src={IMAGES.logo} alt={COMPANY.name} className="h-12 w-auto object-contain"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(200,255,0,0.3))' }}
                 onError={(e) => {
                   e.target.style.display = 'none'

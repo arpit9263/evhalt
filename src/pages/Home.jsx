@@ -485,7 +485,7 @@ function CTABand() {
         style={{ background:'radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.15), transparent)' }} />
       <div className="relative max-w-[1440px] mx-auto px-5 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
         <div>
-          <div className="text-ev-black/50 text-[0.66rem] uppercase tracking-[0.22em] mb-2 font-semibold">{COMPANY.name}</div>
+          <div className="text-ev-black/50 text-[2rem] uppercase tracking-[0.15em] mb-2 font-bold">{COMPANY.name}</div>
           <h2 className="font-extrabold text-ev-black leading-tight" style={{ fontSize:'clamp(2rem,4vw,3rem)', letterSpacing:'-.025em' }}>
             Your next charge<br />is closer than you think.
           </h2>
