@@ -7,28 +7,28 @@ export const COMPANY = {
   name:       'EV Halt',
   tagline:    'Charge Fast, Go Far',
   slogan:     'Your Journey Has Just Begun.',
-  founded:    '2020',
-  city:       'Bangalore, India',
-  website:    'www.evhalt.in',
+  founded:    '2026',
+  city:       'Gwaliar, India',
+  website:    'www.evhalt.com',
 }
 
 // ── CONTACT DETAILS ──────────────────────────────────────────────
 export const CONTACT = {
-  phone:        '+91 98765 43210',          // ← Change this
-  phoneDisplay: '+91 98765 43210',
-  whatsapp:     '919876543210',             // ← WhatsApp number (no + or spaces)
-  email:        'hello@evhalt.in',          // ← Change this
-  emailPartner: 'partners@evhalt.in',
-  emailSupport: 'support@evhalt.in',
-  address:      '14th Floor, Prestige Tech Park, Kadubeesanahalli, Marathahalli, Bangalore – 560103, Karnataka',
-  addressShort: 'Prestige Tech Park, Bangalore – 560103',
+  phone:        '+91 8545098444',          // ← Change this
+  phoneDisplay: '+91 85450 98444, +91 7000635972', // ← Formatted for display
+  whatsapp:     '8545098444',             // ← WhatsApp number (no + or spaces)
+  email:        'enquiry@evhalt.com',          // ← Change this
+  emailPartner: 'enquiry@evhalt.com',
+  emailSupport: 'support@evhalt.com',
+    address:      '06, Vardan Apartment University Road, Gwaliar Madhya Pradesh 474011, India',
+  addressShort: '06, Vardan Apartment, University Road, Gwaliar',
   hours:        'Mon – Sat, 9 AM – 7 PM IST',
   support:      '24/7 Network Operations',
 }
 
 // ── SOCIAL MEDIA ─────────────────────────────────────────────────
 export const SOCIAL = {
-  instagram: 'https://instagram.com/evhalt',    // ← Change this
+  instagram: 'https://www.instagram.com/ev.halt?igsh=dzdyamg4ajg0bTJi&utm_source=ig_contact_invite',    // ← Change this
   twitter:   'https://twitter.com/evhalt',
   linkedin:  'https://linkedin.com/company/evhalt',
   youtube:   'https://youtube.com/@evhalt',

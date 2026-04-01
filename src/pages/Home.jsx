@@ -100,55 +100,7 @@ function Hero() {
             </div>
 
             {/* Right — Floating data cards */}
-            <div className="hidden lg:flex flex-col items-end gap-4 relative">
-              {/* Station photo card */}
-              <motion.div
-                initial={{ opacity:0, x:30 }} animate={{ opacity:1, x:0 }} transition={{ duration:.8, delay:.4 }}
-                className="relative w-[380px] rounded-2xl overflow-hidden border border-ev-lime/20 float-anim"
-                style={{ boxShadow: '0 0 60px rgba(200,255,0,0.1)' }}>
-                <img src={IMAGES.station} alt="EV Halt Station"
-                  className="w-full aspect-video object-cover"
-                  style={{ filter: 'saturate(1.05) brightness(0.85)' }}
-                  onError={(e)=>{e.target.style.display='none'}} />
-                <div className="absolute bottom-0 inset-x-0 p-4"
-                  style={{ background:'linear-gradient(to top, rgba(10,11,10,.9), transparent)' }}>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-[0.6rem] uppercase tracking-[0.15em] text-ev-lime mb-0.5">Active Session</div>
-                      <div className="text-ev-white text-sm font-semibold">Koramangala Hub · Bengaluru</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-ev-lime text-xl leading-none">142</div>
-                      <div className="text-ev-muted text-[0.6rem]">kW</div>
-                    </div>
-                  </div>
-                  {/* Progress bar */}
-                  <div className="mt-3 h-1.5 bg-ev-card rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-ev-lime to-ev-yellow rounded-full charge-animate"
-                      style={{ boxShadow: '0 0 8px rgba(200,255,0,0.5)' }} />
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Mini cards */}
-              <div className="flex gap-3">
-                {[
-                  { icon: Leaf,   label: 'Solar Powered', val: '100%', color: '#00FF87' },
-                  { icon: Shield, label: 'Uptime SLA',    val: '99.7%', color: '#C8FF00' },
-                ].map((c, i) => (
-                  <motion.div key={c.label}
-                    initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:.6, delay:.6+i*.1 }}
-                    className="flex items-center gap-3 bg-ev-card rounded-xl px-4 py-3 border border-ev-lime/15 float-anim-delay"
-                    style={{ animationDelay: `${i*0.5}s` }}>
-                    <c.icon size={18} style={{ color: c.color }} />
-                    <div>
-                      <div className="font-bold text-ev-white text-[1rem] leading-none" style={{ color: c.color }}>{c.val}</div>
-                      <div className="text-ev-muted text-[0.65rem]">{c.label}</div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+          
           </div>
         </div>
       </motion.div>
@@ -206,9 +158,9 @@ function NetworkPreview() {
                 <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(200,255,0,0.06)" strokeWidth="1" strokeDasharray="4,6" />
               ))}
               {[
-                {x:196,y:295,city:'Bengaluru',major:true,d:'0s'},
-                {x:145,y:210,city:'Mumbai',   major:true,d:'0.5s'},
-                {x:203,y:95, city:'Delhi',    major:true,d:'1s'},
+                {x:196,y:295,city:'Orai',major:true,d:'0s'},
+                {x:145,y:210,city:'Gwalior',   major:true,d:'0.5s'},
+                {x:203,y:95, city:'Jhansi',    major:true,d:'1s'},
                 {x:202,y:262,city:'Hyderabad',major:false,d:'0.3s'},
                 {x:210,y:328,city:'Chennai',  major:false,d:'0.7s'},
                 {x:132,y:232,city:'Pune',     major:false,d:'0.9s'},
