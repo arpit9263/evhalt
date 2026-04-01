@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { STATS, COMPANY, IMAGES, CONTACT } from '@/data/constants'
 import { Leaf, Zap, Shield, Users, Award, Globe } from 'lucide-react'
 import { useReveal } from '@/hooks/useReveal'
 import { PageHero, Section, SectionHeader, FeatureCard, GradientDivider } from '@/components/ui/UIComponents'
@@ -35,7 +36,7 @@ function Timeline() {
                 <Zap size={14} className="text-ev-black fill-ev-black" strokeWidth={2.5} />
               </div>
               {/* Content */}
-              <div className={`lg:w-[46%] ml-12 lg:ml-0 ${i % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12 lg:ml-auto'} bg-ev-dark2 rounded-2xl p-6 border border-white/[0.06]`}>
+              <div className={`lg:w-[46%] ml-12 lg:ml-0 ${i % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12 lg:ml-auto'} bg-ev-card2 rounded-2xl p-6 border border-ev-lime/[0.08]`}>
                 <div className="text-ev-lime text-[0.72rem] uppercase tracking-[0.2em] mb-2 font-500" style={{ fontWeight: 500 }}>{e.year}</div>
                 <div className="font-display font-700 text-[1.1rem] text-ev-white mb-2" style={{ fontWeight: 700 }}>{e.title}</div>
                 <p className="text-[0.85rem] text-ev-muted leading-relaxed font-300">{e.desc}</p>
@@ -85,7 +86,7 @@ function Stats() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="bg-ev-dark2 p-8 border border-white/[0.06] text-center hover:bg-ev-dark3 transition-colors"
+            className="bg-ev-card2 p-8 border border-ev-lime/[0.08] text-center hover:bg-ev-card3 transition-colors"
           >
             <s.icon size={20} className="text-ev-lime mx-auto mb-4" />
             <div className="font-display font-800 text-[2.8rem] text-ev-white leading-none mb-2" style={{ fontWeight: 800 }}>{s.n}</div>
@@ -117,9 +118,9 @@ function Team() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
-            className="bg-ev-dark3 rounded-2xl p-5 border border-white/[0.06] text-center hover:border-ev-lime/20 transition-colors group"
+            className="bg-ev-card3 rounded-2xl p-5 border border-ev-lime/[0.08] text-center hover:border-ev-lime/20 transition-colors group"
           >
-            <div className="w-14 h-14 rounded-full bg-ev-dark2 border-2 border-white/10 group-hover:border-ev-lime/30 flex items-center justify-center mx-auto mb-4 transition-colors">
+            <div className="w-14 h-14 rounded-full bg-ev-card2 border-2 border-ev-lime/[0.12] group-hover:border-ev-lime/30 flex items-center justify-center mx-auto mb-4 transition-colors">
               <span className="font-display font-700 text-ev-lime text-sm" style={{ fontWeight: 700 }}>{m.init}</span>
             </div>
             <div className="font-600 text-[0.88rem] text-ev-white mb-1" style={{ fontWeight: 600 }}>{m.name}</div>

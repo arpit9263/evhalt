@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { STATS, COMPANY, IMAGES, CONTACT } from '@/data/constants'
 import { Zap, Home, Building2, Truck, Route, Sun, BarChart3, CheckCircle2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useReveal } from '@/hooks/useReveal'
@@ -74,10 +75,10 @@ function ServicesGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.55, delay: (i % 3) * 0.1 }}
-              className="group bg-ev-dark2 rounded-2xl border border-white/[0.07] hover:border-ev-lime/25 transition-all duration-400 overflow-hidden hover:-translate-y-1"
+              className="group bg-ev-card2 rounded-2xl border border-ev-lime/[0.1] hover:border-ev-lime/25 transition-all duration-400 overflow-hidden hover:-translate-y-1"
             >
               {/* Header */}
-              <div className="p-6 border-b border-white/[0.06]">
+              <div className="p-6 border-b border-ev-lime/[0.08]">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-11 h-11 rounded-xl bg-ev-lime/[0.08] border border-ev-lime/20 flex items-center justify-center group-hover:bg-ev-lime/[0.15] transition-colors">
                     <Icon size={20} className="text-ev-lime" />
@@ -177,7 +178,7 @@ function PricingSection() {
             className={`relative rounded-2xl p-7 border flex flex-col ${
               plan.featured
                 ? 'bg-ev-lime border-ev-lime'
-                : 'bg-ev-dark3 border-white/[0.08] hover:border-white/20 transition-colors'
+                : 'bg-ev-card3 border-ev-lime/[0.1] hover:border-white/20 transition-colors'
             }`}
           >
             {plan.badge && (
@@ -192,7 +193,7 @@ function PricingSection() {
               {plan.price}
             </div>
             <div className={`text-[0.75rem] mb-2 font-300 ${plan.featured ? 'text-ev-black/60' : 'text-ev-muted'}`}>{plan.unit}</div>
-            <p className={`text-[0.78rem] mb-5 leading-snug font-300 ${plan.featured ? 'text-ev-black/70' : 'text-ev-mid'}`}>{plan.desc}</p>
+            <p className={`text-[0.78rem] mb-5 leading-snug font-300 ${plan.featured ? 'text-ev-black/70' : 'text-ev-muted'}`}>{plan.desc}</p>
             <div className={`h-px mb-5 ${plan.featured ? 'bg-ev-black/15' : 'bg-white/[0.06]'}`} />
             <ul className="space-y-2.5 mb-8 flex-1">
               {plan.features.map((f) => (
@@ -206,7 +207,7 @@ function PricingSection() {
               to="/contact"
               className={`w-full text-center py-3.5 rounded-full text-[0.82rem] font-600 block transition-all ${
                 plan.featured
-                  ? 'bg-ev-black text-ev-lime hover:bg-ev-dark'
+                  ? 'bg-ev-black text-ev-lime hover:bg-ev-card'
                   : 'border border-white/15 text-ev-white hover:border-ev-lime hover:text-ev-lime'
               }`}
               style={{ fontWeight: 600 }}
@@ -238,7 +239,7 @@ function PaymentMethods() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
-            className="bg-ev-dark2 rounded-2xl p-6 border border-white/[0.07] hover:border-ev-lime/20 transition-colors group"
+            className="bg-ev-card2 rounded-2xl p-6 border border-ev-lime/[0.1] hover:border-ev-lime/20 transition-colors group"
           >
             <div className="w-10 h-10 rounded-lg bg-ev-lime/[0.08] border border-ev-lime/20 flex items-center justify-center mb-4 group-hover:bg-ev-lime/15 transition-colors">
               <Zap size={18} className="text-ev-lime" />
@@ -265,7 +266,7 @@ function FleetSection() {
           <p className="text-ev-muted leading-relaxed mb-8 font-300 reveal reveal-delay-2">
             Custom-engineered depot solutions for logistics, taxi, and rental fleets. Designed around your vehicles, your hours, and your SLA requirements — not a generic product.
           </p>
-          <div className="space-y-0 border border-white/[0.07] rounded-2xl overflow-hidden reveal reveal-delay-3">
+          <div className="space-y-0 border border-ev-lime/[0.1] rounded-2xl overflow-hidden reveal reveal-delay-3">
             {[
               ['Depot design & engineering', 'Included'],
               ['Smart load balancing AI', 'Included'],
@@ -279,7 +280,7 @@ function FleetSection() {
           </div>
         </div>
         <div className="reveal reveal-delay-2">
-          <div className="bg-ev-dark3 rounded-2xl border border-white/[0.07] p-8">
+          <div className="bg-ev-card3 rounded-2xl border border-ev-lime/[0.1] p-8">
             <div className="text-ev-lime text-[0.68rem] uppercase tracking-[0.2em] mb-6 font-500" style={{ fontWeight: 500 }}>Fleet Enquiry</div>
             <div className="space-y-4">
               {['Company Name', 'Number of Vehicles', 'Location / City', 'Contact Email'].map((field) => (
@@ -288,7 +289,7 @@ function FleetSection() {
                   <input
                     type="text"
                     placeholder={`Enter ${field.toLowerCase()}`}
-                    className="w-full bg-ev-dark2 border border-white/10 rounded-xl px-4 py-3 text-[0.88rem] text-ev-white placeholder:text-ev-mid focus:outline-none focus:border-ev-lime/40 transition-colors"
+                    className="w-full bg-ev-card2 border border-ev-lime/[0.12] rounded-xl px-4 py-3 text-[0.88rem] text-ev-white placeholder:text-ev-muted focus:outline-none focus:border-ev-lime/40 transition-colors"
                   />
                 </div>
               ))}

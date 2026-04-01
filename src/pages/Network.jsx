@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { STATS, COMPANY, IMAGES, CONTACT } from '@/data/constants'
 import { motion } from 'framer-motion'
 import { MapPin, Zap, Route, ChevronRight, Search } from 'lucide-react'
 import { useReveal } from '@/hooks/useReveal'
@@ -55,7 +56,7 @@ const MAP_NODES = [
 
 function NetworkMap({ selected, onSelect }) {
   return (
-    <div className="relative rounded-2xl overflow-hidden border border-white/[0.07] bg-[#0a0a0a]" style={{ aspectRatio: '4/3' }}>
+    <div className="relative rounded-2xl overflow-hidden border border-ev-lime/[0.1] bg-[#0a0a0a]" style={{ aspectRatio: '4/3' }}>
       {/* Grid */}
       <div className="absolute inset-0 pointer-events-none"
         style={{
@@ -158,7 +159,7 @@ function CityDirectory() {
               placeholder="Search city or state..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-ev-dark2 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-[0.88rem] text-ev-white placeholder:text-ev-mid focus:outline-none focus:border-ev-lime/40 transition-colors"
+              className="w-full bg-ev-card2 border border-ev-lime/[0.12] rounded-xl pl-10 pr-4 py-3 text-[0.88rem] text-ev-white placeholder:text-ev-muted focus:outline-none focus:border-ev-lime/40 transition-colors"
             />
           </div>
           {/* List */}
@@ -169,12 +170,12 @@ function CityDirectory() {
                 className={`flex items-center justify-between px-4 py-3.5 rounded-xl border cursor-pointer transition-all ${
                   selected === city.name
                     ? 'bg-ev-lime/[0.08] border-ev-lime/30'
-                    : 'border-transparent hover:bg-ev-dark2 hover:border-white/[0.06]'
+                    : 'border-transparent hover:bg-ev-card2 hover:border-ev-lime/[0.08]'
                 }`}
                 onClick={() => setSelected(selected === city.name ? null : city.name)}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-[0.6rem] text-ev-mid font-mono w-5">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-[0.6rem] text-ev-muted font-mono w-5">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <div className="text-[0.9rem] font-600 text-ev-white leading-tight" style={{ fontWeight: 600 }}>{city.name}</div>
                     <div className="text-[0.7rem] text-ev-muted">{city.state}</div>
@@ -220,7 +221,7 @@ function HighwayCorridors() {
             <span className="text-gradient-lime">Charge the whole way.</span>
           </h2>
         </div>
-        <div className="flex gap-1.5 p-1 bg-ev-dark3 rounded-xl border border-white/[0.06]">
+        <div className="flex gap-1.5 p-1 bg-ev-card3 rounded-xl border border-ev-lime/[0.08]">
           {['all', 'live', 'coming', 'planned'].map((f) => (
             <button
               key={f}
@@ -244,7 +245,7 @@ function HighwayCorridors() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.04 }}
-            className="group flex items-center justify-between px-5 py-4 rounded-xl border border-white/[0.05] bg-ev-dark3 hover:bg-ev-dark2 hover:border-white/[0.1] transition-all cursor-pointer"
+            className="group flex items-center justify-between px-5 py-4 rounded-xl border border-white/[0.05] bg-ev-card3 hover:bg-ev-card2 hover:border-ev-lime/[0.12] transition-all cursor-pointer"
           >
             <div className="flex items-center gap-5">
               <span className="font-display font-700 text-ev-lime text-[1.05rem] w-16 flex-shrink-0" style={{ fontWeight: 700 }}>{h.code}</span>
@@ -267,7 +268,7 @@ function HighwayCorridors() {
                 }`} />
                 <span className={`text-[0.68rem] uppercase tracking-[0.1em] ${
                   h.status === 'live' ? 'text-ev-lime' :
-                  h.status === 'coming' ? 'text-yellow-400' : 'text-ev-mid'
+                  h.status === 'coming' ? 'text-yellow-400' : 'text-ev-muted'
                 }`}>{h.status}</span>
               </div>
               <ChevronRight size={15} className="text-ev-muted group-hover:text-ev-lime transition-colors" />
@@ -282,7 +283,7 @@ function HighwayCorridors() {
 function RoutePlanner() {
   return (
     <Section dark id="planner">
-      <div className="rounded-3xl border border-white/[0.07] overflow-hidden"
+      <div className="rounded-3xl border border-ev-lime/[0.1] overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #101608 100%)' }}
       >
         <div className="p-10 lg:p-16 grid lg:grid-cols-2 gap-12 items-center">
@@ -299,7 +300,7 @@ function RoutePlanner() {
               Coming Soon in the EV Halt App
             </div>
           </div>
-          <div className="bg-ev-dark3 rounded-2xl border border-white/[0.07] p-7">
+          <div className="bg-ev-card3 rounded-2xl border border-ev-lime/[0.1] p-7">
             <div className="space-y-4">
               {[
                 { label: 'From', placeholder: 'Starting city or location', icon: MapPin },
@@ -312,14 +313,14 @@ function RoutePlanner() {
                     <input
                       type="text"
                       placeholder={f.placeholder}
-                      className="w-full bg-ev-dark2 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-[0.88rem] text-ev-white placeholder:text-ev-mid focus:outline-none focus:border-ev-lime/40 transition-colors"
+                      className="w-full bg-ev-card2 border border-ev-lime/[0.12] rounded-xl pl-10 pr-4 py-3 text-[0.88rem] text-ev-white placeholder:text-ev-muted focus:outline-none focus:border-ev-lime/40 transition-colors"
                     />
                   </div>
                 </div>
               ))}
               <div>
                 <label className="text-[0.62rem] uppercase tracking-[0.18em] text-ev-muted block mb-2">Vehicle Range (km)</label>
-                <select className="w-full bg-ev-dark2 border border-white/10 rounded-xl px-4 py-3 text-[0.88rem] text-ev-white focus:outline-none focus:border-ev-lime/40 transition-colors appearance-none cursor-pointer">
+                <select className="w-full bg-ev-card2 border border-ev-lime/[0.12] rounded-xl px-4 py-3 text-[0.88rem] text-ev-white focus:outline-none focus:border-ev-lime/40 transition-colors appearance-none cursor-pointer">
                   <option value="300">Up to 300 km</option>
                   <option value="400">Up to 400 km</option>
                   <option value="500">Up to 500 km</option>
@@ -357,7 +358,7 @@ export default function Network() {
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 max-w-[680px]"
         >
           {[['350+','Charging Points'],['28','Cities'],['12','NH Corridors'],['99.7%','Network Uptime']].map(([n,l]) => (
-            <div key={l} className="bg-white/[0.04] rounded-xl px-4 py-4 border border-white/[0.06]">
+            <div key={l} className="bg-white/[0.04] rounded-xl px-4 py-4 border border-ev-lime/[0.08]">
               <div className="font-display font-800 text-ev-lime text-[1.6rem] leading-none mb-1" style={{ fontWeight: 800 }}>{n}</div>
               <div className="text-[0.65rem] uppercase tracking-[0.12em] text-ev-muted">{l}</div>
             </div>

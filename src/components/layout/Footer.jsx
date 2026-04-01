@@ -1,23 +1,18 @@
 import { Link } from 'react-router-dom'
-import { Zap, MapPin, Mail, Phone, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react'
-
-const LINKS = {
-  Locations:  [{ label: 'Our Network', to: '/network' }, { label: 'Route Planner', to: '/network#planner' }, { label: 'Partner With Us', to: '/contact' }],
-  Charging:   [{ label: 'EV Halt App', to: '/services#app' }, { label: 'Subscriptions', to: '/services#subscriptions' }, { label: 'Fleet Solutions', to: '/services#fleet' }, { label: 'Access & Payment', to: '/services#payment' }],
-  Company:    [{ label: 'About Us', to: '/about' }, { label: 'Technology', to: '/technology' }, { label: 'Careers', to: '/about#careers' }, { label: 'Newsroom', to: '/about#news' }],
-  Support:    [{ label: 'Help Centre', to: '/contact' }, { label: 'Contact Us', to: '/contact' }, { label: 'Privacy Policy', to: '#' }, { label: 'Terms of Service', to: '#' }],
-}
+import { Zap, MapPin, Mail, Phone, Instagram, Twitter, Linkedin, Youtube, Facebook } from 'lucide-react'
+import { COMPANY, CONTACT, SOCIAL, IMAGES, FOOTER_LINKS } from '@/data/constants'
 
 export default function Footer() {
   return (
-    <footer className="bg-ev-dark border-t border-white/[0.06]">
-      {/* Top CTA strip */}
-      <div className="border-b border-white/[0.06]">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="bg-ev-card border-t border-ev-lime/[0.08]">
+      {/* CTA Strip */}
+      <div className="border-b border-ev-lime/[0.06]"
+        style={{ background: 'linear-gradient(135deg, rgba(200,255,0,0.04) 0%, transparent 50%)' }}>
+        <div className="max-w-[1440px] mx-auto px-5 lg:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <div className="text-[0.68rem] uppercase tracking-[0.22em] text-ev-lime mb-2 font-500" style={{ fontWeight: 500 }}>India's Fastest EV Network</div>
-            <div className="font-display font-700 text-2xl text-ev-white" style={{ fontWeight: 700 }}>
-              Ready to <span className="text-gradient-lime">charge smarter?</span>
+            <div className="text-ev-lime text-[0.62rem] uppercase tracking-[0.22em] mb-2 font-semibold">{COMPANY.tagline}</div>
+            <div className="font-extrabold text-2xl text-ev-white">
+              Ready to <span className="text-gradient">charge smarter?</span>
             </div>
           </div>
           <div className="flex gap-3 flex-wrap">
@@ -25,58 +20,52 @@ export default function Footer() {
               <Zap size={14} className="fill-ev-black" strokeWidth={2} />
               Find Nearest Station
             </Link>
-            <Link to="/services" className="btn-outline text-sm">
-              View Charging Plans
-            </Link>
+            <Link to="/services" className="btn-outline text-sm">View Charging Plans</Link>
           </div>
         </div>
       </div>
 
-      {/* Main footer grid */}
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
-          {/* Brand */}
+      {/* Main */}
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div className="col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 bg-ev-lime rounded-sm flex items-center justify-center">
-                <Zap size={18} className="text-ev-black fill-ev-black" strokeWidth={2.5} />
+            <Link to="/" className="inline-block mb-5">
+              <img src={IMAGES.logo} alt={COMPANY.name} className="h-10 w-auto object-contain"
+                style={{ filter: 'drop-shadow(0 0 8px rgba(200,255,0,0.3))' }}
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                  e.target.nextSibling.style.display = 'flex'
+                }}
+              />
+              <div className="hidden items-center gap-2">
+                <div className="bolt-icon w-6 h-7" />
+                <span className="font-extrabold text-lg text-ev-white">EV<span className="text-ev-lime">HALT</span></span>
               </div>
-              <span className="font-display font-800 text-xl text-ev-white" style={{ fontWeight: 800 }}>
-                EV<span className="text-ev-lime">HALT</span>
-              </span>
             </Link>
-            <p className="text-[0.84rem] text-ev-muted leading-relaxed mb-6 max-w-[240px]">
-              India's most advanced EV charging infrastructure. Charge Fast, Go Far.
+            <p className="text-[0.83rem] text-ev-muted leading-relaxed mb-5 max-w-[220px]">
+              {COMPANY.tagline}. India's most advanced EV charging infrastructure.
             </p>
             <div className="space-y-2.5">
-              <div className="flex items-center gap-2.5 text-[0.8rem] text-ev-muted">
-                <MapPin size={14} className="text-ev-lime flex-shrink-0" />
-                Prestige Tech Park, Bangalore – 560103
-              </div>
-              <div className="flex items-center gap-2.5 text-[0.8rem] text-ev-muted">
-                <Mail size={14} className="text-ev-lime flex-shrink-0" />
-                hello@evhalt.in
-              </div>
-              <div className="flex items-center gap-2.5 text-[0.8rem] text-ev-muted">
-                <Phone size={14} className="text-ev-lime flex-shrink-0" />
-                +91 80 4567 8900
-              </div>
+              {[
+                [MapPin, CONTACT.addressShort],
+                [Mail,   CONTACT.email],
+                [Phone,  CONTACT.phoneDisplay],
+              ].map(([Icon, val], i) => (
+                <div key={i} className="flex items-start gap-2 text-[0.78rem] text-ev-muted">
+                  <Icon size={13} className="text-ev-lime flex-shrink-0 mt-0.5" />
+                  <span>{val}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Link columns */}
-          {Object.entries(LINKS).map(([title, links]) => (
+          {Object.entries(FOOTER_LINKS).map(([title, links]) => (
             <div key={title}>
-              <div className="text-[0.62rem] uppercase tracking-[0.22em] text-ev-lime mb-5 font-500" style={{ fontWeight: 500 }}>
-                {title}
-              </div>
-              <ul className="space-y-3">
+              <div className="text-ev-lime text-[0.6rem] uppercase tracking-[0.22em] mb-4 font-semibold">{title}</div>
+              <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="text-[0.84rem] text-ev-muted hover:text-ev-white transition-colors duration-200"
-                    >
+                    <Link to={link.to} className="text-[0.82rem] text-ev-muted hover:text-ev-lime transition-colors duration-200">
                       {link.label}
                     </Link>
                   </li>
@@ -87,26 +76,24 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/[0.06]">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-[0.75rem] text-ev-mid">
-            © 2025 EV Halt Technologies Pvt. Ltd. All rights reserved.
+      {/* Bottom */}
+      <div className="border-t border-ev-lime/[0.06]">
+        <div className="max-w-[1440px] mx-auto px-5 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-[0.73rem] text-ev-mid">
+            © 2025 {COMPANY.name} Technologies Pvt. Ltd. All rights reserved.
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {[
-              { Icon: Instagram, label: 'Instagram' },
-              { Icon: Twitter,   label: 'X / Twitter' },
-              { Icon: Linkedin,  label: 'LinkedIn' },
-              { Icon: Youtube,   label: 'YouTube' },
-            ].map(({ Icon, label }) => (
-              <button
-                key={label}
-                aria-label={label}
-                className="w-8 h-8 rounded-full border border-white/[0.1] flex items-center justify-center text-ev-mid hover:border-ev-lime hover:text-ev-lime transition-all duration-200"
-              >
-                <Icon size={15} />
-              </button>
+              [Instagram, SOCIAL.instagram],
+              [Twitter,   SOCIAL.twitter],
+              [Linkedin,  SOCIAL.linkedin],
+              [Youtube,   SOCIAL.youtube],
+              [Facebook,  SOCIAL.facebook],
+            ].map(([Icon, href], i) => (
+              <a key={i} href={href} target="_blank" rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full border border-ev-lime/[0.12] flex items-center justify-center text-ev-muted hover:border-ev-lime hover:text-ev-lime transition-all duration-200">
+                <Icon size={14} />
+              </a>
             ))}
           </div>
         </div>

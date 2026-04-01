@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { STATS, COMPANY, IMAGES, CONTACT } from '@/data/constants'
 import { Zap, Cpu, Cloud, Lock, Sun, Wifi, BarChart3, RefreshCw, CheckCircle2 } from 'lucide-react'
 import { useReveal } from '@/hooks/useReveal'
 import { PageHero, Section, SectionHeader, FeatureCard, GradientDivider, DataRow } from '@/components/ui/UIComponents'
@@ -23,7 +24,7 @@ function ChargingSpecs() {
           <p className="text-ev-muted leading-relaxed mb-8 font-300 reveal reveal-delay-2">
             Every EV Halt station supports CCS2, CHAdeMO, and Type-2 AC simultaneously. Our proprietary smart power management algorithm distributes peak power across all connected vehicles — no degradation, no waiting.
           </p>
-          <div className="space-y-0 border border-white/[0.07] rounded-2xl overflow-hidden reveal reveal-delay-3">
+          <div className="space-y-0 border border-ev-lime/[0.1] rounded-2xl overflow-hidden reveal reveal-delay-3">
             {[
               ['Peak Output',         '150 kW per port'],
               ['Simultaneous ports',  'Up to 4 per station'],
@@ -38,7 +39,7 @@ function ChargingSpecs() {
 
         {/* Visual */}
         <div className="reveal reveal-delay-1">
-          <div className="bg-ev-dark2 rounded-2xl border border-white/[0.07] p-8">
+          <div className="bg-ev-card2 rounded-2xl border border-ev-lime/[0.1] p-8">
             <div className="text-[0.65rem] uppercase tracking-[0.2em] text-ev-muted mb-6">Output by Connector Standard</div>
             <div className="space-y-5">
               {standards.map((s) => (
@@ -57,12 +58,12 @@ function ChargingSpecs() {
                       style={{ background: s.color, boxShadow: `0 0 8px ${s.color}` }}
                     />
                   </div>
-                  <p className="text-[0.72rem] text-ev-mid mt-1.5 font-300">{s.desc}</p>
+                  <p className="text-[0.72rem] text-ev-muted mt-1.5 font-300">{s.desc}</p>
                 </div>
               ))}
             </div>
             {/* Max power callout */}
-            <div className="mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between">
+            <div className="mt-8 pt-6 border-t border-ev-lime/[0.08] flex items-center justify-between">
               <div>
                 <div className="text-[0.62rem] uppercase tracking-[0.18em] text-ev-muted">Peak Power Output</div>
                 <div className="font-display font-800 text-ev-lime text-[2.6rem] leading-none mt-1" style={{ fontWeight: 800 }}>
@@ -136,7 +137,7 @@ function SecuritySection() {
               { icon: Lock, label: 'ISO 15118', sub: 'PKI authentication' },
               { icon: Wifi, label: 'GDPR Ready', sub: 'Data privacy' },
             ].map((item) => (
-              <div key={item.label} className="bg-ev-dark2 rounded-xl p-4 border border-white/[0.06] flex items-center gap-3">
+              <div key={item.label} className="bg-ev-card2 rounded-xl p-4 border border-ev-lime/[0.08] flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-ev-lime/[0.08] flex items-center justify-center flex-shrink-0">
                   <item.icon size={15} className="text-ev-lime" />
                 </div>
@@ -149,8 +150,8 @@ function SecuritySection() {
           </div>
         </div>
         <div className="reveal reveal-delay-1">
-          <div className="bg-ev-dark2 rounded-2xl border border-white/[0.07] overflow-hidden">
-            <div className="px-6 py-4 border-b border-white/[0.06] flex items-center gap-2">
+          <div className="bg-ev-card2 rounded-2xl border border-ev-lime/[0.1] overflow-hidden">
+            <div className="px-6 py-4 border-b border-ev-lime/[0.08] flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-ev-lime animate-pulse-slow" />
               <span className="text-[0.72rem] uppercase tracking-[0.15em] text-ev-lime font-500" style={{ fontWeight: 500 }}>Security Stack</span>
             </div>
@@ -207,7 +208,7 @@ function Certifications() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.04 }}
-            className="px-5 py-2.5 rounded-full border border-white/[0.08] bg-ev-dark3 text-[0.78rem] text-ev-muted hover:border-ev-lime/30 hover:text-ev-lime hover:bg-ev-lime/[0.04] transition-all cursor-default font-400"
+            className="px-5 py-2.5 rounded-full border border-ev-lime/[0.1] bg-ev-card3 text-[0.78rem] text-ev-muted hover:border-ev-lime/30 hover:text-ev-lime hover:bg-ev-lime/[0.04] transition-all cursor-default font-400"
           >
             {c}
           </motion.div>
@@ -236,7 +237,7 @@ function RoadmapSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`rounded-2xl p-6 border ${item.done ? 'border-ev-lime/25 bg-ev-lime/[0.04]' : 'border-white/[0.07] bg-ev-dark2'}`}
+            className={`rounded-2xl p-6 border ${item.done ? 'border-ev-lime/25 bg-ev-lime/[0.04]' : 'border-ev-lime/[0.1] bg-ev-card2'}`}
           >
             <div className="flex items-center justify-between mb-4">
               <span className={`text-[0.65rem] uppercase tracking-[0.15em] font-500 ${item.done ? 'text-ev-lime' : 'text-ev-muted'}`} style={{ fontWeight: 500 }}>
